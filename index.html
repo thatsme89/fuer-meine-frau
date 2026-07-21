@@ -2,6 +2,7 @@
 <html lang="el">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -10,93 +11,150 @@
     <meta name="description"
         content="Μια μικρή ιστορία αγάπης, γραμμένη μόνο για την Αθανασία.">
 
+    <meta name="theme-color" content="#050608">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-    <!-- ========================================= -->
-    <!-- Animated Background -->
-    <!-- ========================================= -->
+<!-- ================================================= -->
+<!-- Animated Background                               -->
+<!-- ================================================= -->
 
-    <div class="background">
+<div class="background" aria-hidden="true">
 
-        <div id="stars"></div>
-        <div id="twinkling"></div>
-        <div id="particles"></div>
+    <div id="stars"></div>
+
+    <div id="twinkling"></div>
+
+    <div id="particles"></div>
+
+</div>
+
+<!-- ================================================= -->
+<!-- Loader                                             -->
+<!-- ================================================= -->
+
+<div id="loader">
+
+    <div class="loader-content">
+
+        <div class="loader-heart">
+
+            ❤
+
+        </div>
+
+        <p>
+
+            Loading our story...
+
+        </p>
 
     </div>
 
-    <!-- ========================================= -->
-    <!-- Intro -->
-    <!-- ========================================= -->
+</div>
 
-    <section class="hero">
+<!-- ================================================= -->
+<!-- Hero                                               -->
+<!-- ================================================= -->
 
-        <div class="hero-content">
+<header class="hero">
 
-            <span class="hero-subtitle">
-                Η ιστορία μας
-            </span>
+    <div class="hero-content">
 
-            <h1>
+        <span class="hero-subtitle">
 
-                Για τη γυναίκα<br>
-                που άλλαξε<br>
-                τη ζωή μου.
+            Η ιστορία μας
 
-            </h1>
+        </span>
 
-            <div class="hero-date">
+        <h1>
 
-                22 Ιουλίου 2026
+            Για τη γυναίκα<br>
 
-            </div>
+            που άλλαξε<br>
 
-            <p class="hero-text">
+            τη ζωή μου.
 
-                Δεν είναι απλώς ένα γράμμα.
+        </h1>
 
-                Είναι όλα όσα ίσως δεν σου λέω
-                όσο συχνά θα έπρεπε.
+        <div class="hero-date">
 
-            </p>
-
-            <button id="startStory">
-
-                Άνοιξε την καρδιά μου
-
-            </button>
+            22 Ιουλίου 2026
 
         </div>
 
-        <div class="scroll-indicator">
+        <p class="hero-text">
 
-            <span></span>
+            Δεν είναι απλώς ένα γράμμα.
 
-        </div>
+            Είναι όλα όσα ίσως δεν σου λέω
+            όσο συχνά θα έπρεπε.
 
-    </section>
+        </p>
 
-    <!-- ========================================= -->
-    <!-- Envelope -->
-    <!-- ========================================= -->
+        <button
+            id="startStory"
+            type="button"
+            aria-label="Ξεκίνα την ιστορία">
 
-    <section id="envelopeSection" class="hidden">
+            Άνοιξε την καρδιά μου
+
+        </button>
+
+    </div>
+
+    <div class="scroll-indicator" aria-hidden="true">
+
+        <span></span>
+
+    </div>
+
+</header>
+
+<!-- ================================================= -->
+<!-- Main                                               -->
+<!-- ================================================= -->
+
+<main>
+
+<!-- ================================================= -->
+<!-- Envelope                                           -->
+<!-- ================================================= -->
+
+<section
+    id="envelopeSection"
+    class="is-hidden">
+
+    <div class="container">
 
         <div class="envelope-container">
 
-            <div class="wax-seal">
+            <div
+                class="wax-seal"
+                aria-hidden="true">
+
                 ❤
+
             </div>
 
-            <div class="envelope">
+            <div
+                class="envelope"
+                role="button"
+                tabindex="0"
+                aria-label="Άνοιξε το γράμμα">
 
                 <div class="envelope-front"></div>
 
@@ -122,13 +180,19 @@
 
         </div>
 
-    </section>
+    </div>
 
-    <!-- ========================================= -->
-    <!-- Letter -->
-    <!-- ========================================= -->
+</section>
 
-    <section id="letterSection" class="hidden">
+<!-- ================================================= -->
+<!-- Letter                                             -->
+<!-- ================================================= -->
+
+<section
+    id="letterSection"
+    class="is-hidden">
+
+    <div class="container">
 
         <article class="letter">
 
@@ -178,7 +242,9 @@
 
             </p>
 
-            <div class="continue">
+            <div
+                class="continue"
+                aria-hidden="true">
 
                 ↓
 
@@ -186,13 +252,17 @@
 
         </article>
 
-    </section>
-        <!-- ========================================= -->
-    <!-- Chapter 1 -->
-    <!-- Hotel Kanali -->
-    <!-- ========================================= -->
+    </div>
 
-    <section class="chapter">
+</section>
+<!-- ================================================= -->
+<!-- Chapter 1                                         -->
+<!-- Hotel Kanali                                      -->
+<!-- ================================================= -->
+
+<section class="chapter reveal">
+
+    <div class="container">
 
         <div class="chapter-number">
 
@@ -262,14 +332,17 @@
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-    <!-- ========================================= -->
-    <!-- Transition -->
-    <!-- ========================================= -->
+<!-- ================================================= -->
+<!-- Transition                                        -->
+<!-- ================================================= -->
 
-    <section class="transition">
+<section class="transition reveal">
+
+    <div class="container">
 
         <span>
 
@@ -283,14 +356,17 @@
 
         </h2>
 
-    </section>
+    </div>
 
-  
-    <!-- ========================================= -->
-    <!-- Wedding -->
-    <!-- ========================================= -->
+</section>
 
-    <section class="chapter">
+<!-- ================================================= -->
+<!-- Wedding                                           -->
+<!-- ================================================= -->
+
+<section class="chapter reveal">
+
+    <div class="container">
 
         <div class="chapter-number">
 
@@ -364,14 +440,17 @@
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
-    <!-- ========================================= -->
-    <!-- Mallorca -->
-    <!-- ========================================= -->
+<!-- ================================================= -->
+<!-- Mallorca                                          -->
+<!-- ================================================= -->
 
-    <section class="chapter">
+<section class="chapter reveal">
+
+    <div class="container">
 
         <div class="chapter-number">
 
@@ -444,12 +523,16 @@
 
         </div>
 
-    </section>
-        <!-- ========================================= -->
-    <!-- What I Love About You -->
-    <!-- ========================================= -->
+    </div>
 
-    <section class="love-section">
+</section>
+<!-- ================================================= -->
+<!-- Love Section                                      -->
+<!-- ================================================= -->
+
+<section class="love-section reveal">
+
+    <div class="container">
 
         <div class="love-header">
 
@@ -486,192 +569,187 @@
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
+<!-- ================================================= -->
+<!-- Qualities                                         -->
+<!-- ================================================= -->
 
-    <!-- ========================================= -->
-    <!-- Love Cards -->
-    <!-- ========================================= -->
+<section class="qualities">
 
-    <section class="qualities">
+    <div class="quality-card reveal">
 
-        <div class="quality-card">
+        <span class="quality-number">
 
-            <span class="quality-number">
+            01
 
-                01
+        </span>
 
-            </span>
+        <h3>
 
-            <h3>
+            Το χαμόγελό σου
 
-                Το χαμόγελό σου
+        </h3>
 
-            </h3>
+        <p>
 
-            <p>
+            Έχει έναν μοναδικό τρόπο
+            να κάνει ακόμη και τις δύσκολες μέρες
+            να φαίνονται λίγο πιο φωτεινές.
 
-                Έχει έναν μοναδικό τρόπο
-                να κάνει ακόμη και τις δύσκολες μέρες
-                να φαίνονται λίγο πιο φωτεινές.
+        </p>
 
-            </p>
+    </div>
 
-        </div>
+    <div class="quality-card reveal">
 
+        <span class="quality-number">
 
-        <div class="quality-card">
+            02
 
-            <span class="quality-number">
+        </span>
 
-                02
+        <h3>
 
-            </span>
+            Η καλοσύνη σου
 
-            <h3>
+        </h3>
 
-                Η καλοσύνη σου
+        <p>
 
-            </h3>
+            Δεν χρειάζεται να προσπαθήσεις
+            για να κάνεις τους ανθρώπους
+            να νιώσουν όμορφα.
 
-            <p>
+            Το κάνεις απλώς
+            επειδή αυτή είσαι.
 
-                Δεν χρειάζεται να προσπαθήσεις
-                για να κάνεις τους ανθρώπους
-                να νιώσουν όμορφα.
+        </p>
 
-                Το κάνεις απλώς
-                επειδή αυτή είσαι.
+    </div>
 
-            </p>
+    <div class="quality-card reveal">
 
-        </div>
+        <span class="quality-number">
 
+            03
 
-        <div class="quality-card">
+        </span>
 
-            <span class="quality-number">
+        <h3>
 
-                03
+            Η ειλικρίνειά σου
 
-            </span>
+        </h3>
 
-            <h3>
+        <p>
 
-                Η ειλικρίνειά σου
+            Πάντα ξέρω ότι μπορώ
+            να εμπιστευτώ κάθε λέξη σου.
 
-            </h3>
+        </p>
 
-            <p>
+    </div>
 
-                Πάντα ξέρω ότι μπορώ
-                να εμπιστευτώ κάθε λέξη σου.
+    <div class="quality-card reveal">
 
-            </p>
+        <span class="quality-number">
 
-        </div>
+            04
 
+        </span>
 
-        <div class="quality-card">
+        <h3>
 
-            <span class="quality-number">
+            Η υπομονή σου
 
-                04
+        </h3>
 
-            </span>
+        <p>
 
-            <h3>
+            Ακόμη και στις στιγμές
+            που εγώ δυσκολεύομαι...
 
-                Η υπομονή σου
+            εσύ βρίσκεις πάντα
+            τον τρόπο να με ηρεμείς.
 
-            </h3>
+        </p>
 
-            <p>
+    </div>
 
-                Ακόμη και στις στιγμές
-                που εγώ δυσκολεύομαι...
+    <div class="quality-card reveal">
 
-                εσύ βρίσκεις πάντα
-                τον τρόπο να με ηρεμείς.
+        <span class="quality-number">
 
-            </p>
+            05
 
-        </div>
+        </span>
 
+        <h3>
 
-        <div class="quality-card">
+            Η δύναμή σου
 
-            <span class="quality-number">
+        </h3>
 
-                05
+        <p>
 
-            </span>
+            Σε θαυμάζω.
 
-            <h3>
+            Περισσότερο απ' όσο
+            ίσως θα καταλάβεις ποτέ.
 
-                Η δύναμή σου
+        </p>
 
-            </h3>
+    </div>
 
-            <p>
+    <div class="quality-card last reveal">
 
-                Σε θαυμάζω.
+        <span class="quality-number">
 
-                Περισσότερο απ' όσο
-                ίσως θα καταλάβεις ποτέ.
+            ∞
 
-            </p>
+        </span>
 
-        </div>
+        <h3>
 
+            Και πάνω απ' όλα...
 
-        <div class="quality-card last">
+        </h3>
 
-            <span class="quality-number">
+        <p>
 
-                ∞
+            Δεν ερωτεύτηκα
+            μια τέλεια γυναίκα.
 
-            </span>
+        </p>
 
-            <h3>
+        <p>
 
-                Και πάνω απ' όλα...
+            Ερωτεύτηκα...
 
-            </h3>
+        </p>
 
-            <p>
+        <h2>
 
-                Δεν ερωτεύτηκα
-                μια τέλεια γυναίκα.
+            εσένα.
 
-            </p>
+        </h2>
 
-            <p>
+    </div>
 
-                Ερωτεύτηκα...
+</section>
 
-            </p>
+<!-- ================================================= -->
+<!-- Dreams                                            -->
+<!-- ================================================= -->
 
-            <h2>
+<section class="dreams reveal">
 
-                εσένα.
+    <div class="container">
 
-            </h2>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ========================================= -->
-    <!-- Dreams -->
-    <!-- ========================================= -->
-
-    <section class="dreams">
-
-        <span>
+        <span class="chapter-subtitle">
 
             Το μέλλον μας
 
@@ -752,12 +830,16 @@
 
         </div>
 
-    </section>
-        <!-- ========================================= -->
-    <!-- Promise -->
-    <!-- ========================================= -->
+    </div>
 
-    <section class="promise">
+</section>
+<!-- ================================================= -->
+<!-- Promise                                            -->
+<!-- ================================================= -->
+
+<section class="promise reveal">
+
+    <div class="container">
 
         <div class="promise-content">
 
@@ -833,15 +915,17 @@
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
+<!-- ================================================= -->
+<!-- Final Letter                                       -->
+<!-- ================================================= -->
 
-    <!-- ========================================= -->
-    <!-- Final Letter -->
-    <!-- ========================================= -->
+<section class="final-letter reveal">
 
-    <section class="final-letter">
+    <div class="container">
 
         <div class="letter-wrapper">
 
@@ -892,15 +976,17 @@
 
         </div>
 
-    </section>
+    </div>
 
+</section>
 
+<!-- ================================================= -->
+<!-- Ending                                             -->
+<!-- ================================================= -->
 
-    <!-- ========================================= -->
-    <!-- Ending -->
-    <!-- ========================================= -->
+<section class="ending reveal">
 
-    <section class="ending">
+    <div class="container">
 
         <div class="ending-content">
 
@@ -949,101 +1035,66 @@
 
         </div>
 
-    </section>
-
-
-
-    <!-- ========================================= -->
-    <!-- Footer -->
-    <!-- ========================================= -->
-
-    <footer>
-
-        <p>
-
-            Για πάντα μαζί.
-
-        </p>
-
-    </footer>
-        <!-- ========================================= -->
-    <!-- Scroll Progress -->
-    <!-- ========================================= -->
-
-    <div class="scroll-progress">
-        <div class="scroll-progress-bar"></div>
     </div>
 
-    <!-- ========================================= -->
-    <!-- Floating Hearts -->
-    <!-- ========================================= -->
+</section>
 
-    <div class="floating-hearts">
+</main>
 
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
+<!-- ================================================= -->
+<!-- Footer                                             -->
+<!-- ================================================= -->
 
-    </div>
+<footer>
 
-    <!-- ========================================= -->
-    <!-- Back To Top -->
-    <!-- ========================================= -->
+    <p>
 
-    <button id="backToTop" aria-label="Back to top">
+        Για πάντα μαζί.
 
-        ↑
+    </p>
 
-    </button>
+</footer>
 
-    <!-- ========================================= -->
-    <!-- Loading Screen -->
-    <!-- ========================================= -->
+<!-- ================================================= -->
+<!-- Scroll Progress                                    -->
+<!-- ================================================= -->
 
-    <div id="loader">
+<div class="scroll-progress">
 
-        <div class="loader-content">
+    <div class="scroll-progress-bar"></div>
 
-            <div class="loader-heart">
+</div>
 
-                ❤
+<!-- ================================================= -->
+<!-- Floating Hearts                                    -->
+<!-- ================================================= -->
 
-            </div>
+<div class="floating-hearts" aria-hidden="true"></div>
 
-            <p>
+<!-- ================================================= -->
+<!-- Cursor Glow                                        -->
+<!-- ================================================= -->
 
-                Loading our story...
+<div class="cursor-glow" aria-hidden="true"></div>
 
-            </p>
+<!-- ================================================= -->
+<!-- Back To Top                                        -->
+<!-- ================================================= -->
 
-        </div>
+<button
+    id="backToTop"
+    type="button"
+    aria-label="Back to top">
 
-    </div>
+    ↑
 
-    <!-- ========================================= -->
-    <!-- Cursor Glow -->
-    <!-- ========================================= -->
+</button>
 
-    <div class="cursor-glow"></div>
+<!-- ================================================= -->
+<!-- JavaScript                                         -->
+<!-- ================================================= -->
 
-    <!-- ========================================= -->
-    <!-- Audio Placeholder -->
-    <!-- (für später, momentan deaktiviert) -->
-    <!-- ========================================= -->
-
-    <!--
-    <audio id="bgMusic" loop>
-        <source src="assets/music.mp3" type="audio/mpeg">
-    </audio>
-    -->
-
-    <!-- ========================================= -->
-    <!-- Scripts -->
-    <!-- ========================================= -->
-
-    <script src="script.js"></script>
+<script src="script.js" defer></script>
 
 </body>
 
