@@ -1,15 +1,19 @@
-/*
-=========================================
-Για τη γυναίκα που άλλαξε τη ζωή μου
-Premium Edition
-=========================================
-*/
+/* ==========================================================
+   BIRTHDAY WEBSITE
+   Part 1
+========================================================== */
 
 "use strict";
 
-/* =====================================
+/* ==========================================================
    ELEMENTS
-===================================== */
+========================================================== */
+
+const body = document.body;
+
+const loader = document.getElementById("loader");
+
+const hero = document.querySelector(".hero");
 
 const startButton = document.getElementById("startStory");
 
@@ -17,103 +21,156 @@ const envelopeSection = document.getElementById("envelopeSection");
 
 const letterSection = document.getElementById("letterSection");
 
-const loader = document.getElementById("loader");
+const envelope = document.querySelector(".envelope");
 
-const backToTop = document.getElementById("backToTop");
+const revealElements = document.querySelectorAll(".reveal");
 
 const progressBar = document.querySelector(".scroll-progress-bar");
 
-const cursor = document.querySelector(".cursor-glow");
+const backToTop = document.getElementById("backToTop");
 
-const envelope = document.querySelector(".envelope");
-
-/* =====================================
-   PAGE LOADER
-===================================== */
+/* ==========================================================
+   LOADER
+========================================================== */
 
 window.addEventListener("load", () => {
 
     setTimeout(() => {
 
-        loader.style.opacity = "0";
+        body.classList.add("loaded");
 
-        loader.style.pointerEvents = "none";
-
-        setTimeout(() => {
-
-            loader.remove();
-
-        }, 1000);
-
-    }, 1800);
+    }, 900);
 
 });
 
-/* =====================================
+/* ==========================================================
    START STORY
-===================================== */
+========================================================== */
 
-startButton.addEventListener("click", () => {
+function startStory() {
 
-    envelopeSection.classList.remove("hidden");
+    hero.style.transition = "opacity 1.2s ease";
 
-    envelopeSection.scrollIntoView({
-
-        behavior: "smooth"
-
-    });
-
-});
-
-/* =====================================
-   ENVELOPE
-===================================== */
-
-envelope.addEventListener("click", () => {
-
-    envelope.style.transform =
-        "scale(1.03) rotateX(8deg)";
+    hero.style.opacity = "0";
 
     setTimeout(() => {
 
-        letterSection.classList.remove("hidden");
+        hero.style.display = "none";
 
-        letterSection.scrollIntoView({
+        envelopeSection.classList.remove("is-hidden");
 
-            behavior: "smooth"
+        envelopeSection.scrollIntoView({
+
+            behavior: "smooth",
+            block: "center"
 
         });
 
-    }, 600);
+    }, 1200);
+
+}
+
+startButton.addEventListener("click", startStory);
+
+/* ==========================================================
+   OPEN ENVELOPE
+========================================================== */
+
+function openEnvelope() {
+
+    if (envelope.classList.contains("open")) return;
+
+    envelope.classList.add("open");
+
+    setTimeout(() => {
+
+        letterSection.classList.remove("is-hidden");
+
+        letterSection.scrollIntoView({
+
+            behavior: "smooth",
+            block: "start"
+
+        });
+
+    }, 1400);
+
+}
+
+envelope.addEventListener("click", openEnvelope);
+
+envelope.addEventListener("keydown", event => {
+
+    if (event.key === "Enter" || event.key === " ") {
+
+        event.preventDefault();
+
+        openEnvelope();
+
+    }
 
 });
 
-/* =====================================
+/* ==========================================================
+   REVEAL ON SCROLL
+========================================================== */
+
+const observer = new IntersectionObserver(
+
+    entries => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+        });
+
+    },
+
+    {
+
+        threshold: 0.18
+
+    }
+
+);
+
+revealElements.forEach(element => {
+
+    observer.observe(element);
+
+});
+
+/* ==========================================================
    SCROLL PROGRESS
-===================================== */
+========================================================== */
 
-window.addEventListener("scroll", () => {
+function updateProgressBar() {
 
-    const scrollTop = document.documentElement.scrollTop;
+    const scrollTop = window.scrollY;
 
     const height =
+
         document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
+        window.innerHeight;
 
-    const percent =
-        (scrollTop / height) * 100;
+    const progress = (scrollTop / height) * 100;
 
-    progressBar.style.width = percent + "%";
+    progressBar.style.width = `${progress}%`;
 
-});
+}
 
-/* =====================================
+/* ==========================================================
    BACK TO TOP
-===================================== */
+========================================================== */
 
-window.addEventListener("scroll", () => {
+function toggleBackButton() {
 
-    if (window.scrollY > 800) {
+    if (window.scrollY > 700) {
 
         backToTop.classList.add("show");
 
@@ -123,7 +180,7 @@ window.addEventListener("scroll", () => {
 
     }
 
-});
+}
 
 backToTop.addEventListener("click", () => {
 
@@ -136,649 +193,231 @@ backToTop.addEventListener("click", () => {
     });
 
 });
-    <!-- ========================================= -->
-    <!-- Promise -->
-    <!-- ========================================= -->
 
-    <section class="promise">
-
-        <div class="promise-content">
-
-            <span class="chapter-subtitle">
-
-                Μια υπόσχεση
-
-            </span>
-
-            <h2>
-
-                Δεν ξέρω τι μας επιφυλάσσει το μέλλον.
-
-            </h2>
-
-            <div class="chapter-divider"></div>
-
-            <p>
-
-                Η ζωή δεν είναι πάντα εύκολη.
-
-            </p>
-
-            <p>
-
-                Θα υπάρξουν όμορφες στιγμές.
-
-            </p>
-
-            <p>
-
-                Θα υπάρξουν και δύσκολες.
-
-            </p>
-
-            <p>
-
-                Όμως υπάρχει κάτι
-                που δεν θα αλλάξει ποτέ.
-
-            </p>
-
-            <blockquote>
-
-                Θα είμαι πάντα δίπλα σου.
-
-            </blockquote>
-
-            <p>
-
-                Στις χαρές.
-
-            </p>
-
-            <p>
-
-                Στις δυσκολίες.
-
-            </p>
-
-            <p>
-
-                Στα όνειρά μας.
-
-            </p>
-
-            <p>
-
-                Και σε κάθε νέο κεφάλαιο
-                που θα γράψει η ζωή μας.
-
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ========================================= -->
-    <!-- Final Letter -->
-    <!-- ========================================= -->
-
-    <section class="final-letter">
-
-        <div class="letter-wrapper">
-
-            <h2>
-
-                Αν μπορούσα να γυρίσω τον χρόνο πίσω...
-
-            </h2>
-
-            <p>
-
-                Θα σε διάλεγα ξανά.
-
-            </p>
-
-            <p>
-
-                Χωρίς δεύτερη σκέψη.
-
-            </p>
-
-            <p>
-
-                Χωρίς κανέναν δισταγμό.
-
-            </p>
-
-            <p>
-
-                Κάθε φορά.
-
-            </p>
-
-            <div class="chapter-divider"></div>
-
-            <p class="big-text">
-
-                Γιατί δεν είσαι απλώς
-                η γυναίκα μου.
-
-            </p>
-
-            <p class="big-text">
-
-                Είσαι ο άνθρωπός μου.
-
-            </p>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ========================================= -->
-    <!-- Ending -->
-    <!-- ========================================= -->
-
-    <section class="ending">
-
-        <div class="ending-content">
-
-            <p>
-
-                Ευχαριστώ...
-
-            </p>
-
-            <p>
-
-                γιατί εκείνη τη μέρα
-                στο Hotel Kanali
-
-            </p>
-
-            <p>
-
-                δεν ξεκίνησε απλώς
-                μια γνωριμία.
-
-            </p>
-
-            <p class="quote">
-
-                Ξεκίνησε η ζωή
-                που πάντα ονειρευόμουν.
-
-            </p>
-
-            <div class="signature">
-
-                <span>
-
-                    Με όλη μου την αγάπη,
-
-                </span>
-
-                <h2>
-
-                    Χαράλαμπος ❤️
-
-                </h2>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- ========================================= -->
-    <!-- Footer -->
-    <!-- ========================================= -->
-
-    <footer>
-
-        <p>
-
-            Για πάντα μαζί.
-
-        </p>
-
-    </footer>
-/* =====================================
-   SMOOTH SECTION ANIMATIONS
-===================================== */
-
-const sections = document.querySelectorAll("section");
-
-const sectionObserver = new IntersectionObserver(
-
-(entries)=>{
-
-    entries.forEach((entry)=>{
-
-        if(entry.isIntersecting){
-
-            entry.target.animate([
-
-                {
-                    opacity:0,
-                    transform:"translateY(60px)"
-                },
-
-                {
-                    opacity:1,
-                    transform:"translateY(0)"
-                }
-
-            ],{
-
-                duration:1000,
-                easing:"ease-out",
-                fill:"forwards"
-
-            });
-
-        }
-
-    });
-
-},
-
-{
-    threshold:0.15
-}
-
-);
-
-sections.forEach(section=>{
-
-    sectionObserver.observe(section);
-
-});
-
-/* =====================================
-   FLOATING HEARTS
-===================================== */
-
-const heartsContainer=document.querySelector(".floating-hearts");
-
-function createHeart(){
-
-    const heart=document.createElement("span");
-
-    heart.innerHTML="❤";
-
-    heart.style.position="absolute";
-
-    heart.style.left=Math.random()*100+"vw";
-
-    heart.style.bottom="-50px";
-
-    heart.style.opacity=Math.random()*0.6+0.2;
-
-    heart.style.fontSize=(Math.random()*18+12)+"px";
-
-    heart.style.color="rgba(212,175,55,.6)";
-
-    heart.style.transition="transform linear";
-
-    heartsContainer.appendChild(heart);
-
-    const duration=Math.random()*6000+6000;
-
-    heart.animate(
-
-    [
-
-        {
-            transform:"translateY(0px)"
-        },
-
-        {
-            transform:"translateY(-120vh)"
-        }
-
-    ],
-
-    {
-
-        duration:duration,
-
-        easing:"linear"
-
-    }
-
-    );
-
-    setTimeout(()=>{
-
-        heart.remove();
-
-    },duration);
-
-}
-
-setInterval(createHeart,2500);
-
-/* =====================================
-   GOLD GLOW ON TITLES
-===================================== */
-
-const titles=document.querySelectorAll("h1,h2");
-
-titles.forEach(title=>{
-
-    title.addEventListener("mouseenter",()=>{
-
-        title.style.textShadow=
-        "0 0 25px rgba(212,175,55,.45)";
-
-    });
-
-    title.addEventListener("mouseleave",()=>{
-
-        title.style.textShadow="none";
-
-    });
-
-});
-
-/* =====================================
-   RANDOM STAR TWINKLE
-===================================== */
-
-const stars=document.getElementById("stars");
-
-setInterval(()=>{
-
-    stars.style.opacity=0.35+Math.random()*0.35;
-
-},1800);
-
-/* =====================================
-   LETTER FADE
-===================================== */
-
-const letter=document.querySelector(".letter");
-
-const letterObserver=new IntersectionObserver(
-
-(entries)=>{
-
-    entries.forEach((entry)=>{
-
-        if(entry.isIntersecting){
-
-            letter.animate([
-
-                {
-
-                    opacity:0,
-
-                    transform:"scale(.96)"
-
-                },
-
-                {
-
-                    opacity:1,
-
-                    transform:"scale(1)"
-
-                }
-
-            ],{
-
-                duration:1200,
-
-                fill:"forwards"
-
-            });
-
-        }
-
-    });
-
-},
-
-{
-
-    threshold:.4
-
-}
-
-);
-
-letterObserver.observe(letter);
-
-/* =====================================
-   QUALITY CARDS STAGGER
-===================================== */
-
-cards.forEach((card,index)=>{
-
-    card.style.transitionDelay=(index*120)+"ms";
-
-});
-
-/* =====================================
-   SCROLL END MESSAGE
-===================================== */
-
-window.addEventListener("scroll",()=>{
-
-    const scrollHeight=document.documentElement.scrollHeight;
-
-    const current=window.innerHeight+window.scrollY;
-
-    if(current>=scrollHeight-20){
-
-        console.log("❤️ Thank you for reading our story.");
-
-    }
-
-});
-/* =====================================
-   INITIAL ANIMATIONS
-===================================== */
-
-document.addEventListener("DOMContentLoaded", () => {
-
-    document.body.classList.add("loaded");
-
-});
-
-/* =====================================
-   PARALLAX HERO
-===================================== */
-
-const hero = document.querySelector(".hero");
+/* ==========================================================
+   SCROLL EVENTS
+========================================================== */
 
 window.addEventListener("scroll", () => {
 
-    const offset = window.scrollY;
+    updateProgressBar();
 
-    if (hero) {
+    toggleBackButton();
 
-        hero.style.transform = `translateY(${offset * 0.15}px)`;
+});
+/* ==========================================================
+   CURSOR GLOW
+========================================================== */
 
-    }
+const cursorGlow = document.querySelector(".cursor-glow");
+
+if (cursorGlow && window.matchMedia("(pointer:fine)").matches) {
+
+    document.addEventListener("mousemove", event => {
+
+        cursorGlow.style.left = `${event.clientX}px`;
+        cursorGlow.style.top = `${event.clientY}px`;
+
+    });
+
+} else if (cursorGlow) {
+
+    cursorGlow.style.display = "none";
+
+}
+
+/* ==========================================================
+   FLOATING HEARTS
+========================================================== */
+
+const heartsContainer = document.querySelector(".floating-hearts");
+
+function createHeart() {
+
+    if (!heartsContainer) return;
+
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+
+    heart.innerHTML = "❤";
+
+    heart.style.left = Math.random() * 100 + "%";
+
+    heart.style.fontSize = (14 + Math.random() * 18) + "px";
+
+    heart.style.animationDuration = (8 + Math.random() * 6) + "s";
+
+    heart.style.opacity = (0.15 + Math.random() * 0.25);
+
+    heartsContainer.appendChild(heart);
+
+    heart.addEventListener("animationend", () => {
+
+        heart.remove();
+
+    });
+
+}
+
+setInterval(createHeart, 3500);
+
+/* ==========================================================
+   BACKGROUND PARALLAX
+========================================================== */
+
+const background = document.querySelector(".background");
+
+function updateBackground() {
+
+    if (!background) return;
+
+    const offset = window.scrollY * 0.15;
+
+    background.style.transform = `translateY(${offset}px)`;
+
+}
+
+window.addEventListener("scroll", updateBackground, {
+
+    passive: true
 
 });
 
-/* =====================================
-   GOLD PULSE
-===================================== */
+/* ==========================================================
+   GOLD BUTTON EFFECT
+========================================================== */
 
-setInterval(() => {
+if (startButton) {
 
-    document.querySelectorAll(".chapter-divider").forEach((divider) => {
+    startButton.addEventListener("mouseenter", () => {
 
-        divider.animate(
-            [
-                {
-                    opacity: 0.5,
-                    transform: "scaleX(0.9)"
-                },
-                {
-                    opacity: 1,
-                    transform: "scaleX(1.1)"
-                },
-                {
-                    opacity: 0.5,
-                    transform: "scaleX(0.9)"
-                }
-            ],
+        startButton.animate([
+
             {
-                duration: 3500,
-                easing: "ease-in-out"
+
+                transform: "scale(1)"
+
+            },
+
+            {
+
+                transform: "scale(1.04)"
+
+            },
+
+            {
+
+                transform: "scale(1)"
+
             }
-        );
+
+        ], {
+
+            duration: 700
+
+        });
 
     });
-
-}, 4000);
-
-/* =====================================
-   SMOOTH APPEAR FOR PARAGRAPHS
-===================================== */
-
-const paragraphs = document.querySelectorAll("p");
-
-const paragraphObserver = new IntersectionObserver(
-
-(entries) => {
-
-    entries.forEach((entry) => {
-
-        if (entry.isIntersecting) {
-
-            entry.target.animate(
-
-                [
-
-                    {
-                        opacity:0,
-                        transform:"translateY(25px)"
-                    },
-
-                    {
-                        opacity:1,
-                        transform:"translateY(0)"
-                    }
-
-                ],
-
-                {
-
-                    duration:800,
-
-                    easing:"ease-out",
-
-                    fill:"forwards"
-
-                }
-
-            );
-
-            paragraphObserver.unobserve(entry.target);
-
-        }
-
-    });
-
-},
-
-{
-
-    threshold:0.15
 
 }
+
+/* ==========================================================
+   SIGNATURE REVEAL
+========================================================== */
+
+const signature = document.querySelector(".signature");
+
+if (signature) {
+
+    signature.style.opacity = "0";
+
+    signature.style.transform = "translateY(40px)";
+
+    signature.style.transition =
+
+        "opacity 1.4s ease, transform 1.4s ease";
+
+    const signatureObserver = new IntersectionObserver(entries => {
+
+        entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            setTimeout(() => {
+
+                signature.style.opacity = "1";
+
+                signature.style.transform = "translateY(0)";
+
+            }, 700);
+
+            signatureObserver.disconnect();
+
+        });
+
+    }, {
+
+        threshold: 0.5
+
+    });
+
+    signatureObserver.observe(signature);
+
+}
+
+/* ==========================================================
+   SECTION FADE STAGGER
+========================================================== */
+
+document.querySelectorAll(".chapter").forEach(section => {
+
+    const paragraphs = section.querySelectorAll("p");
+
+    paragraphs.forEach((paragraph, index) => {
+
+        paragraph.style.transitionDelay =
+
+            `${index * 120}ms`;
+
+    });
+
+});
+
+/* ==========================================================
+   RESIZE
+========================================================== */
+
+window.addEventListener("resize", () => {
+
+    updateProgressBar();
+
+});
+
+/* ==========================================================
+   INITIAL STATE
+========================================================== */
+
+updateProgressBar();
+
+toggleBackButton();
+
+updateBackground();
+
+/* ==========================================================
+   END
+========================================================== */
+
+console.log(
+
+    "%c❤️ Happy Birthday Athanasia ❤️",
+
+    "color:#d6b36d;font-size:18px;font-weight:bold;"
 
 );
 
-paragraphs.forEach((p)=>{
+console.log(
 
-    paragraphObserver.observe(p);
+    "Built with love."
 
-});
-
-/* =====================================
-   RANDOM GOLD SHIMMER
-===================================== */
-
-setInterval(()=>{
-
-    document.querySelectorAll(".quality-card").forEach((card)=>{
-
-        if(Math.random() > 0.8){
-
-            card.animate(
-
-                [
-
-                    {
-                        boxShadow:"0 20px 45px rgba(0,0,0,.30)"
-                    },
-
-                    {
-                        boxShadow:"0 0 35px rgba(212,175,55,.25)"
-                    },
-
-                    {
-                        boxShadow:"0 20px 45px rgba(0,0,0,.30)"
-                    }
-
-                ],
-
-                {
-
-                    duration:1800
-
-                }
-
-            );
-
-        }
-
-    });
-
-},5000);
-
-/* =====================================
-   MOBILE TOUCH EFFECT
-===================================== */
-
-if(window.innerWidth < 900){
-
-    document.querySelectorAll(".quality-card").forEach((card)=>{
-
-        card.addEventListener("touchstart",()=>{
-
-            card.style.transform="scale(1.02)";
-
-        });
-
-        card.addEventListener("touchend",()=>{
-
-            card.style.transform="scale(1)";
-
-        });
-
-    });
-
-}
-
-/* =====================================
-   END
-===================================== */
-
-console.log("%c❤️ Για την Αθανασία ❤️",
-"color:#d4af37;font-size:22px;font-weight:bold;");
-
-console.log("Created with love by Charalampos ❤️");
+);
